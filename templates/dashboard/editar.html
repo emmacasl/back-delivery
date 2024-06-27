@@ -1,0 +1,24 @@
+{% extends "dashboard/base.html" %}
+{% block content %}
+    <main class="h-full pb-16 overflow-y-auto px-10">
+        <div class="container grid mx-auto">
+            <div class="flex items-center justify-between">
+                <h2 class="mt-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+                >
+                    Nuevo registro
+                </h2>
+            </div>
+        </div>
+        <div class="mt-4 p-2 w-full overflow-hidden rounded-lg shadow-xs">
+            <div class="">
+                <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                    <br>
+                    
+                <input class="py-2 w-full px-4 rounded-lg bg-blue-500 text-white" type="submit" value="Guardar">
+            </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}

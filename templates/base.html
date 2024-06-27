@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Tienda{% endblock %}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="bg-blue-900 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a class="text-white text-lg font-bold" href="/">Mi Tienda</a>
+        <div>
+            <a class="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium" href="/">Inicio</a>
+            <a class="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+               href={% url 'listado_menus' %}>Menús</a>
+            <a class="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+               href={% url 'listado_pedido' 1 %}>Pedido</a>
+            <a class="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+               href="{% url 'dashboard' %}">Administración</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Main content -->
+<div class="container mx-auto mt-5 px-20">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Footer -->
+<footer class="bg-blue-900 text-white text-center py-4 mt-5">
+    <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row justify-between">
+            <div>
+                <h5 class="text-lg font-bold">Mi Tienda</h5>
+                <p>Dirección. 10 Agosto y Universitaria</p>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <h5 class="text-lg font-bold">Enlaces</h5>
+                <ul class="list-none">
+                    <li><a class="text-gray-300 hover:text-white" href="#">Inicio</a></li>
+                    <li><a class="text-gray-300 hover:text-white" href="#">Productos</a></li>
+                    <li><a class="text-gray-300 hover:text-white" href="#">Menús</a></li>
+                </ul>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <h5 class="text-lg font-bold">Contacto</h5>
+                <ul class="list-none">
+                    <li><a class="text-gray-300 hover:text-white" href="#">Email: info@mitienda.com</a></li>
+                    <li><a class="text-gray-300 hover:text-white" href="#">Teléfono: +1 234 567 890</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-4">
+            © 2024 Mi Tienda. Todos los derechos reservados.
+        </div>
+    </div>
+</footer>
+</body>
+</html>
