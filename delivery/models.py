@@ -20,6 +20,7 @@ class Menu(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
     restaurante = models.ForeignKey(Restaurante, on_delete=models.CASCADE, related_name='menus')
+    imagen = models.URLField()
 
     def __str__(self):
         return self.nombre
