@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import DetailView, TemplateView, ListView, CreateView
+from django.views.generic import DetailView, TemplateView, ListView, CreateView, UpdateView
 
 from delivery.forms import ProductoForm, MenuForm
 from delivery.models import Producto, Menu, Pedido
@@ -66,8 +66,28 @@ class ProductoCrearView(CreateView):
         context = super().get_context_data(**kwargs)
         return context
 
+class ProfuctoEditarView(UpdateView):
+    model = Producto
+    template_name = 'dashboard/editar.html'
+    success_url = '/dashboard/productos'
+    form_class = ProductoForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
 class MenuCrearView(CreateView):
     model = Producto
+    template_name = 'dashboard/editar.html'
+    success_url = '/dashboard/menus'
+    form_class = MenuForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+class MenuEditarView(UpdateView):
+    model = Menu
     template_name = 'dashboard/editar.html'
     success_url = '/dashboard/menus'
     form_class = MenuForm
