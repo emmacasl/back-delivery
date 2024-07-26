@@ -1,0 +1,71 @@
+#files to ignore
+
+__pycache__/
+
+#extensions to ignore
+*.log
+*.map
+*.pot
+*.pyc
+*.pyd
+*.pyo
+# fuentes compiladas
+*.pkl
+
+# incluyo css especificos de terceros
+#alertify
+!alertify.min.css
+!bootstrap.min.css
+
+#directories to ignore
+*.vscode/
+.idea/
+.installed.cfg
+bin
+develop-eggs
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+src/*.egg-info/
+media/
+
+# Bower components
+static/bower_components/
+
+
+# Node components
+*node_modules
+
+
+# archivos generados a partir de typescript
+/static/app/**/*.js
+
+
+# TypeScript
+static/typings/
+
+#archivos estaticos para produccion
+staticfiles/
+
+#migraciones
+*migrations/
+
+#settings
+cfg/settings/production.py
+private.key
+package-lock.json
+
+#redis y celery
+dump.rdb
+celerybeat.pid
+celerybeat-schedule
+
+#mac
+.DS_Store
+
+# new relic
+newrelic.ini
+
