@@ -2,6 +2,9 @@ from django.db import models
 
 from django.db import models
 
+from seguridad.models import Usuario
+
+
 class TipoRestaurante(models.TextChoices):
     COMIDA_RAPIDA = 'COMIDA_RAPIDA', 'Comida Rápida'
     VIP = 'VIP', 'VIP'
@@ -35,15 +38,6 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombre
 
-class Usuario(models.Model):
-    nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=100)
-    identificacion = models.DecimalField(max_digits=10, decimal_places=0)
-    direccion = models.CharField(max_length=255)
-    telefono = models.CharField(max_length=15)
-
-    def __str__(self):
-        return f'{self.nombre} {self.apellido}'
 
 class Pedido(models.Model):
     fecha = models.DateField()
