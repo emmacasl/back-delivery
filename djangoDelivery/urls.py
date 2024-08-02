@@ -27,6 +27,8 @@ urlpatterns = [
     path('api/v1/', include(router.urls)),
     path('api-token-auth/', api_auth_view.ObtainAuthToken.as_view()),
 
+    path('api/v1/menus/', listado_menus, name='listado_menus'),
+
 
     path('productos/', listado_productos, name='listado_productos'),
     path('menus/', listado_menus, name='listado_menus'),
