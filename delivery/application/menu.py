@@ -4,8 +4,20 @@ from delivery.models import Menu
 class MenuAppService(object):
 
     @staticmethod
+    def create_menu(restaurante, data):
+        if restaurante and data:
+            menu = Menu()
+            menu.restaurante = restaurante
+            menu.nombre = data.get('nombre', None)
+            menu.descripcion = data.get('descripcion', None)
+            menu.imagen = data.get('imagen', None)
+            menu.save()
+            return True, menu
+        return False, None
+
+    @staticmethod
     def get_active():
-        return MenuAppService.get_all().filter(active=True)
+        return MenuAppService.get_all().filter(activo=True)
 
     @staticmethod
     def get_all():

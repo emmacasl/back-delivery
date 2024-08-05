@@ -29,3 +29,22 @@ class MenuViewSet(viewsets.ModelViewSet):
             return get_response(serializer.data, status=status.HTTP_200_OK)
         else:
             return get_response([], status=status.HTTP_200_OK)
+
+    @action(detail=False, methods=['post'])
+    def create_menu(self, request):
+        """
+        Crea un menu para el restaurante del usuario
+        """
+        restaurante = RestauranteAppService.get_por_usuario(request.user).first()
+        if restaurante:
+            serializer = MenuSerializer(data=request.data)
+            if serializer.is_valid():
+                # image = request.FILES.get('image', None)
+                state, menu = MenuAppService.create_menu(restaurante, request.data)
+                if state:
+                    return get_response(data=menu.nombre, status=status.HTTP_201_CREATED)
+            else:
+                return get_response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return get_response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return get_response([], status=status.HTTP_200_OK)

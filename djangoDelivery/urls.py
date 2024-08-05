@@ -32,10 +32,11 @@ urlpatterns = [
 
     # APIS MENU
     path('api/v1/menus/', MenuViewSet.as_view({'get': 'get_menus_restaurante'}),  name='listado_menus'),
+    path('api/v1/menu_restaurante/new/', MenuViewSet.as_view({'post': 'create_menu'}), name='create_menu_restaurante'),
 
     # APIS PRODUCTOS
     path('api/v1/product_menu/', ProductViewSet.as_view({'get': 'get_productos_by_menu'}),  name='listado_productos'),
-
+    path('api/v1/product_menu/new/', ProductViewSet.as_view({'post': 'create_product'}), name='create_product_menu'),
 
 
 

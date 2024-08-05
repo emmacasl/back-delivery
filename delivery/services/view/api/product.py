@@ -3,6 +3,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 
+from delivery.application.menu import MenuAppService
 from delivery.application.producto import ProductoAppService
 from delivery.domain.serializer.product import ProductSerializer
 from delivery.models import Menu
@@ -32,3 +33,21 @@ class ProductViewSet(viewsets.ModelViewSet):
 
         else:
             return get_response([], status=status.HTTP_200_OK)
+
+    @action(detail=False, methods=['post'])
+    def create_product(self, request):
+        """
+        Crea un nuevo producto para el menu
+        """
+        menu = MenuAppService.get_all().filter(id=request.data.get('menu', None)).first()
+        id_product = ProductoAppService.get_by_id(request.data.get('id_product', None)).first()
+        if menu:
+            serializer = ProductSerializer(data=request.data)
+            if serializer.is_valid():
+                image = request.FILES.get('image', None)
+                state, menu = ProductoAppService.create_producto(menu, request.data, image, id_product)
+                if state:
+                    return get_response(data=menu.nombre, status=status.HTTP_201_CREATED)
+            return get_response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return get_response(message="Datos incompletos", data=None,
+                            status=status.HTTP_400_BAD_REQUEST)
