@@ -15,11 +15,14 @@ class Restaurante(models.Model):
     direccion = models.CharField(max_length=255)
     telefono = models.CharField(max_length=15)
     tipo = models.CharField(max_length=15, choices=TipoRestaurante.choices)
+    user = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="establishments")
+
 
     def __str__(self):
         return self.nombre
 
 class Menu(models.Model):
+    activo = models.BooleanField(default=True)
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
     restaurante = models.ForeignKey(Restaurante, on_delete=models.CASCADE, related_name='menus')
@@ -29,6 +32,7 @@ class Menu(models.Model):
         return self.nombre
 
 class Producto(models.Model):
+    activo = models.BooleanField(default=True)
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=10, decimal_places=2)

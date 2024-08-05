@@ -2,6 +2,9 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 from rest_framework import routers
+
+from delivery.services.view.api.menu import MenuViewSet
+from delivery.services.view.api.product import ProductViewSet
 from seguridad.services.view.api import auth as api_auth_view
 
 from delivery.views import DashboardView
@@ -27,13 +30,19 @@ urlpatterns = [
     path('api/v1/', include(router.urls)),
     path('api-token-auth/', api_auth_view.ObtainAuthToken.as_view()),
 
-    path('api/v1/menus/', listado_menus, name='listado_menus'),
+    # APIS MENU
+    path('api/v1/menus/', MenuViewSet.as_view({'get': 'get_menus_restaurante'}),  name='listado_menus'),
+
+    # APIS PRODUCTOS
+    path('api/v1/product_menu/', ProductViewSet.as_view({'get': 'get_productos_by_menu'}),  name='listado_productos'),
 
 
+
+
+    # urls django template
     path('productos/', listado_productos, name='listado_productos'),
     path('menus/', listado_menus, name='listado_menus'),
     path('pedido/<int:pedido_id>/', listado_pedido, name='listado_pedido'),
-
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
     path('dashboard/menus', MenusView.as_view(), name='menus'),
     path('dashboard/menu/nuevo', MenuCrearView.as_view(), name='nuevo_menu'),
