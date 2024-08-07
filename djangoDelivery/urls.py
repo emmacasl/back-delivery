@@ -20,6 +20,7 @@ from delivery.views import listado_pedido
 from delivery.views import listado_productos
 
 router = routers.DefaultRouter()
+router.register(r'menus', MenuViewSet, basename='menu')
 
 urlpatterns = [
 
@@ -42,7 +43,7 @@ urlpatterns = [
 
     # urls django template
     path('productos/', listado_productos, name='listado_productos'),
-    path('menus/', listado_menus, name='listado_menus'),
+    path('menus/', listado_menus, name='listado_menus_template'),
     path('pedido/<int:pedido_id>/', listado_pedido, name='listado_pedido'),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
     path('dashboard/menus', MenusView.as_view(), name='menus'),
