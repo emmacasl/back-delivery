@@ -29,7 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/v1/', include(router.urls)),
-    path('api-token-auth/', api_auth_view.ObtainAuthToken.as_view()),
+    path('api-token-auth/', api_auth_view.ObtainAuthToken.as_view(), name='api-token-auth'),
 
     # APIS MENU
     path('api/v1/menus/', MenuViewSet.as_view({'get': 'get_menus_restaurante'}),  name='listado_menus'),
@@ -42,16 +42,16 @@ urlpatterns = [
 
 
     # urls django template
-    path('productos/', listado_productos, name='listado_productos'),
-    path('menus/', listado_menus, name='listado_menus_template'),
-    path('pedido/<int:pedido_id>/', listado_pedido, name='listado_pedido'),
-    path('dashboard/', DashboardView.as_view(), name='dashboard'),
-    path('dashboard/menus', MenusView.as_view(), name='menus'),
-    path('dashboard/menu/nuevo', MenuCrearView.as_view(), name='nuevo_menu'),
-    path('dashboard/menu/editar/<int:pk>', MenuEditarView.as_view(), name='editar_menu'),
-    path('dashboard/productos', ProductosView.as_view(), name='productos'),
-
-    path('dashboard/producto/nuevo', ProductoCrearView.as_view(), name='nuevo_producto'),
-    path('dashboard/producto/editar/<int:pk>', ProfuctoEditarView.as_view(), name='editar_producto'),
-    path('dashboard/ordenes_compra', OrdenesCompraView.as_view(), name='ordenes_compra'),
+    # path('productos/', listado_productos, name='listado_productos'),
+    # path('menus/', listado_menus, name='listado_menus_template'),
+    # path('pedido/<int:pedido_id>/', listado_pedido, name='listado_pedido'),
+    # path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    # path('dashboard/menus', MenusView.as_view(), name='menus'),
+    # path('dashboard/menu/nuevo', MenuCrearView.as_view(), name='nuevo_menu'),
+    # path('dashboard/menu/editar/<int:pk>', MenuEditarView.as_view(), name='editar_menu'),
+    # path('dashboard/productos', ProductosView.as_view(), name='productos'),
+    #
+    # path('dashboard/producto/nuevo', ProductoCrearView.as_view(), name='nuevo_producto'),
+    # path('dashboard/producto/editar/<int:pk>', ProfuctoEditarView.as_view(), name='editar_producto'),
+    # path('dashboard/ordenes_compra', OrdenesCompraView.as_view(), name='ordenes_compra'),
 ]
