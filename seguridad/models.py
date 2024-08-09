@@ -35,7 +35,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('Correo Electrónico', max_length=200, unique=True)
     is_email_verified = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     last_name = models.CharField(max_length=255, blank=True)
     name = models.CharField(max_length=255, blank=True)
     username = models.CharField(max_length=200)

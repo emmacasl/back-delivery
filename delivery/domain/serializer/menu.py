@@ -1,10 +1,11 @@
 from rest_framework import serializers
 
+from delivery.domain.serializer.restaurante import RestauranteSerializer
 from delivery.models import Menu
 
 
 class MenuSerializer(serializers.ModelSerializer):
-    # establishment = serializers.PrimaryKeyRelatedField(source='id_establishment', read_only=True)
+    restaurante = RestauranteSerializer(read_only=True)
 
     class Meta:
         model = Menu
