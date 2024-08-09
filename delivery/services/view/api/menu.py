@@ -12,8 +12,8 @@ from delivery.services.view.api.restaurante import RestauranteAppService
 
 
 class MenuViewSet(viewsets.ModelViewSet):
-    #permission_classes = [IsAuthenticated]
-    #authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
     serializer_class = MenuSerializer
     queryset = Menu.objects.all()
 
