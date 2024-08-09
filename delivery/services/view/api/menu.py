@@ -5,10 +5,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from delivery.application.menu import MenuAppService
+from delivery.application.restaurante import RestauranteAppService
 from delivery.domain.serializer.menu import MenuSerializer
 from delivery.models import Menu
 from delivery.services.response import get_response
-from delivery.services.view.api.restaurante import RestauranteAppService
+
 
 
 class MenuViewSet(viewsets.ModelViewSet):

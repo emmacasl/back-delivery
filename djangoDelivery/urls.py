@@ -5,6 +5,7 @@ from rest_framework import routers
 
 from delivery.services.view.api.menu import MenuViewSet
 from delivery.services.view.api.product import ProductViewSet
+from delivery.services.view.api.restaurante import RestauranteViewSet
 from seguridad.services.view.api import auth as api_auth_view
 
 from delivery.views import DashboardView
@@ -30,6 +31,9 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/v1/', include(router.urls)),
     path('api-token-auth/', api_auth_view.ObtainAuthToken.as_view(), name='api-token-auth'),
+
+    path('api/v1/restaurantes/', RestauranteViewSet.as_view({'get': 'get_all_restaurantes'}), name='listado_restaurantes'),
+    path('api/v1/restaurantes/<int:pk>/', RestauranteViewSet.as_view({'get': 'retrieve'}), name='detalle_restaurante'),
 
     # APIS MENU
     path('api/v1/menus/', MenuViewSet.as_view({'get': 'get_menus_restaurante'}),  name='listado_menus'),
