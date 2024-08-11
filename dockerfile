@@ -12,6 +12,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Ejecutar las migraciones y recopilar archivos estáticos
+RUN python manage.py makemigrations seguridad delivery
 RUN python manage.py migrate
 RUN python manage.py collectstatic --noinput
 
