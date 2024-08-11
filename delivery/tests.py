@@ -8,7 +8,9 @@ from datetime import date, time
 class UserTests(APITestCase):
     def setUp(self):
         """Set up a user and an authenticated client."""
-        self.user = User.objects.create_user(username='carlosdavid', password='testpass', email='carlosdavid.sanmartin@gmail.com')
+        self.user = User.objects.create_user(username='carlosdavid',
+                                             password='testpass',
+                                             email='carlosdavid.sanmartin@gmail.com')
         self.client = APIClient()
         self.client.login(username='testuser', password='testpass')
 
