@@ -5,12 +5,23 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'deliverydb',
+        'USER': 'postgres',
+        'PASSWORD': '@deliverrydb@',
+        'HOST': '52.226.3.146',  # O la dirección IP del servidor si no es local
+        'PORT': '5432',       # El puerto por defecto para PostgreSQL
+    }
 }
+
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
