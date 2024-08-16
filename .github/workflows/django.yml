@@ -85,4 +85,6 @@ jobs:
           location: 'East US'
           ports: |
             8000
+          cpu: 4
+          memory: 6
 
