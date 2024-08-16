@@ -17,7 +17,7 @@ DATABASES = {
         'NAME': 'deliverydb',
         'USER': 'postgres',
         'PASSWORD': '@deliverrydb@',
-        'HOST': '20.237.5.235',  # O la dirección IP del servidor si no es local
+        'HOST': '4.157.192.230',  # O la dirección IP del servidor si no es local
         'PORT': '5432',       # El puerto por defecto para PostgreSQL
     }
 }
