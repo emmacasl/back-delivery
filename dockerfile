@@ -14,8 +14,9 @@ RUN pip install -r requirements.txt
 # Ejecutar las migraciones y recopilar archivos estáticos
 RUN python manage.py makemigrations seguridad delivery
 RUN python manage.py migrate
-RUN python manage.py collectstatic --noinput
-
+#RUN python manage.py collectstatic --noinput
+RUN mkdir -p /app/staticfiles && \
+    python manage.py collectstatic --noinput
 # Exponer el puerto que Gunicorn usará
 EXPOSE 8000
 
