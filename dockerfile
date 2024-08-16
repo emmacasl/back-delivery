@@ -22,5 +22,5 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8000
 
 # Definir el comando por defecto para ejecutar Gunicorn
-#CMD ["gunicorn", "--bind", "0.0.0.0:8000", "djangoDelivery.wsgi:application"]
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "djangoDelivery.wsgi:application"]
+#CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
