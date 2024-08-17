@@ -87,7 +87,7 @@ jobs:
           name: back-delivery
           location: 'East US'
           ports: |
-            8001
+            80
           cpu: 4
           memory: 6
 
