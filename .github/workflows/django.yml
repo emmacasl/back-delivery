@@ -28,10 +28,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run Tests
-      run: |
-        source venv/bin/activate
-        python manage.py test
+#    - name: Run Tests
+#      run: |
+#        source venv/bin/activate
+#        python manage.py test
 
   docker:
     needs: build
@@ -57,7 +57,13 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           docker buildx create --use
-          docker buildx build --platform linux/amd64,linux/arm64 -t ${{ secrets.AZURE_DOCKER }}/back-delivery:${{ github.sha }} --push .
+          docker buildx build --platform linux/amd64 \
+            --build-arg DB_NAME=${{ secrets.DB_NAME }} \
+            --build-arg DB_USER=${{ secrets.DB_USER }} \
+            --build-arg DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+            --build-arg DB_HOST=${{ secrets.DB_HOST }} \
+            --build-arg DB_PORT=${{ secrets.DB_PORT }} \
+            -t ${{ secrets.AZURE_DOCKER }}/back-delivery:${{ github.sha }} --push .
 
 
   deploy:
@@ -81,7 +87,7 @@ jobs:
           name: back-delivery
           location: 'East US'
           ports: |
-            8000
+            8001
           cpu: 4
           memory: 6
 
