@@ -23,7 +23,7 @@ RUN python manage.py migrate
 RUN python manage.py collectstatic --noinput
 
 # Exponer el puerto que Gunicorn usará
-EXPOSE 8000
+EXPOSE 8001
 
 # Iniciar Nginx y Gunicorn
-CMD ["sh", "-c", "nginx && gunicorn --bind 0.0.0.0:8000 djangoDelivery.wsgi:application"]
+CMD ["sh", "-c", "nginx && gunicorn --bind 0.0.0.0:8001 djangoDelivery.wsgi:application"]
