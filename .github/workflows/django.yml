@@ -1,10 +1,7 @@
 name: Django CI/CD
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -85,4 +82,6 @@ jobs:
           location: 'East US'
           ports: |
             8000
+          cpu: 4
+          memory: 6
 
