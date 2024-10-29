@@ -41,7 +41,11 @@ jobs:
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v3.1.0
       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} //Sonar Token generated 
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} //Sonar Token generated
+      with:
+        projectKey: "emmacasl_back-delivery"
+        organization: "emmacasl"
+      
 
 
   # docker:
