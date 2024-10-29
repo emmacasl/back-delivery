@@ -43,6 +43,8 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} //Sonar Token generated
         SONAR_HOST_URL : "https://sonarcloud.io"
+      with:
+        args: "-X"  # Activa el modo de depuración
       
       
 
