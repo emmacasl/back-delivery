@@ -46,9 +46,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions@0.4.0  # Esta es la acción correcta para Snyk
+        uses: snyk/actions/python-3.10@master
         with:
-          args: test --file=requirements.txt
+          args: snyk test --file=requirements.txt
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         
