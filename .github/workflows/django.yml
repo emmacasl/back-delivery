@@ -49,7 +49,7 @@ jobs:
         uses: snyk/actions/python-3.10@master
         # uses: snyk/actions/setup@v1
         with:
-          args: test --file=requirements.txt
+          #args: test --file=requirements.txt
           command: monitor
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
