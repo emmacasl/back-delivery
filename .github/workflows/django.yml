@@ -28,23 +28,33 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-
-  sonarqube:
-    name: SonarQube Integration
+  security:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v4
-      with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarqube-scan-action@v2.0.2
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} //Sonar Token generated
-        SONAR_HOST_URL : "https://sonarcloud.io"
-      with:
-        args: "-X"  # Activa el modo de depuración
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+            
+
+
+  # sonarqube:
+  #   name: SonarQube Integration
+  #   runs-on: ubuntu-latest
+    
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #     with:
+  #       # Disabling shallow clone is recommended for improving relevancy of reporting
+  #       fetch-depth: 0
+  #   - name: SonarCloud Scan
+  #     uses: sonarsource/sonarqube-scan-action@v2.0.2
+  #     env:
+  #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} //Sonar Token generated
+  #       SONAR_HOST_URL : "https://sonarcloud.io"
+  #     with:
+  #       args: "-X"
       
       
 
