@@ -46,7 +46,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/setup@v2  # Esta es la acción correcta para Snyk
+        uses: snyk/actions@0.4.0  # Esta es la acción correcta para Snyk
         with:
           args: test --file=requirements.txt
         env:
