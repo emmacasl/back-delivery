@@ -30,27 +30,12 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.9
-
-      - name: Install Dependencies
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
+      - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
-        with:
-          args: test --file=requirements.txt
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        
             
 
 
